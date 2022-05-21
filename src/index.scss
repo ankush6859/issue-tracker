@@ -1,3 +1,15 @@
+:root {
+  --primary-color: #1d262d;
+  --primary-light: #28343e;
+  --secondary-color: #fe7912;
+  --text-light: #8a96a0;
+  --background-color: #f7f8fa;
+  --border-color: #cfcfcf;
+  --badge-success: #28a745;
+  --badge-warning: #ebaa02;
+  --badge-danger: #dc3545;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
