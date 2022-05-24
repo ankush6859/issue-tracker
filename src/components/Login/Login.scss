@@ -1,0 +1,83 @@
+#login {
+  display: flex;
+  height: 100vh;
+  .left {
+    width: 40%;
+    background-color: var(--primary-color);
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 11rem;
+      height: 70vh;
+      .logo_icon {
+        width: 7 0%;
+      }
+      .main_logo {
+        width: 80%;
+      }
+    }
+
+    .language_changer {
+      background-color: var(--primary-light);
+      color: #fff;
+      padding: 12px 20px;
+      margin: 0 1.2rem 1.2rem;
+      display: flex;
+      align-items: center;
+      span {
+        margin-top: 0.3rem;
+      }
+    }
+  }
+  .right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    #login_form {
+      width: 60%;
+      margin: 0 auto;
+      .text {
+        margin-bottom: 1rem;
+        h4 {
+          font-weight: 400;
+        }
+      }
+      .form_control {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+        label {
+          margin-bottom: 0.3rem;
+        }
+        input {
+          font-size: 1rem;
+          padding: 0.8rem;
+          border: none;
+          outline: none;
+          border-bottom: 2px solid var(--input-border);
+          background-color: var(--background-color);
+          ::placeholder {
+            color: var(--input-placeholder);
+          }
+        }
+      }
+      .form_button {
+        .login_button {
+          background: var(--primary-color);
+          color: #fff;
+          width: 100%;
+        }
+        .disableButton {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
