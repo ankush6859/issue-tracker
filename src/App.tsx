@@ -1,14 +1,14 @@
 import React from 'react';
-import './App.scss';
-import Login from './components/Login/Login';
-import ProjectBoard from './components/ProjectBoard/ProjectBoard';
 import SideNav from './components/SideNav/SideNav';
+import TopNav from './components/TopNav/TopNav';
+
+import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      {/* <Login /> */}
-      <ProjectBoard />
+    <div className="main">
+      <SideNav />
+      <TopNav />
     </div>
   );
 }

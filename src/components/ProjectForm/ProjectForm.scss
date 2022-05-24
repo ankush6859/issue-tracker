@@ -1,0 +1,46 @@
+#projectForm {
+  width: 90%;
+  margin: 2rem auto;
+  h4 {
+    margin-bottom: 2rem;
+  }
+}
+
+.queryForm {
+  .form_row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    .form_control {
+      display: flex;
+      flex-direction: column;
+      input,
+      select {
+        font-size: 1.1rem;
+        padding: 15px 10px;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid var(--input-border);
+        background-color: var(--background-color);
+        color: var(--primary-color);
+      }
+    }
+  }
+  .dates {
+    justify-content: flex-start;
+    margin: 3rem 0;
+  }
+  .filter {
+    width: 51%;
+    :first-child {
+      margin-right: 1rem;
+    }
+    .form_control {
+      width: 50%;
+      label {
+        font-size: 12px;
+      }
+    }
+  }
+}

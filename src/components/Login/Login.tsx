@@ -107,3 +107,13 @@ const Login = () => {
 };
 
 export default Login;
+
+export const Board1 = () => {
+  return <h1>Project Board 1</h1>;
+};
+export const Board2 = () => {
+  return <h1>Project Board 2</h1>;
+};
+export const Board3 = () => {
+  return <h1>Project Board 3</h1>;
+};

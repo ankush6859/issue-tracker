@@ -23,7 +23,6 @@
       align-items: center;
       margin: 28px 10px;
       font-weight: 600;
-      cursor: pointer;
       border-radius: 4px;
       height: 52px;
       background-color: var(--primary-light);
@@ -34,11 +33,15 @@
         width: 4px;
       }
     }
+    a {
+      color: #fff;
+      cursor: pointer;
+    }
   }
 }
 
-.active {
-  color: var(--secondary-color);
+.active a {
+  color: var(--secondary-color) !important;
 }
 .active .side-rectangle {
   width: 4px;

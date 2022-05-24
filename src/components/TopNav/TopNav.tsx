@@ -1,5 +1,6 @@
 import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
+import { Outlet } from 'react-router-dom';
 
 import './TopNav.scss';
 
@@ -19,6 +20,9 @@ const TopNav = () => {
             <PersonIcon />
           </span>
         </div>
+      </div>
+      <div>
+        <Outlet />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 
 import './SideNav.scss';
@@ -13,26 +14,23 @@ const SideNav = () => {
       </div>
       <div className="sidenav-links">
         <ul>
-          <li
-            className={currentNav === 1 ? 'active' : ''}
-            onClick={() => setCurrentNav(1)}
-          >
-            <span className="side-rectangle"></span>
-            <span>PROJECT BOARD</span>
+          <li className={currentNav === 1 ? 'active' : ''}>
+            <Link to={'/'} onClick={() => setCurrentNav(1)}>
+              <span className="side-rectangle"></span>
+              <span>PROJECT BOARD</span>
+            </Link>
           </li>
-          <li
-            className={currentNav === 2 ? 'active' : ''}
-            onClick={() => setCurrentNav(2)}
-          >
-            <span className="side-rectangle"></span>
-            <span>CREATE ISSUES</span>
+          <li>
+            <Link to={'create-issue'} onClick={() => setCurrentNav(2)}>
+              {/* <span className="side-rectangle"></span> */}
+              <span>CREATE ISSUES</span>
+            </Link>
           </li>
-          <li
-            className={currentNav === 3 ? 'active' : ''}
-            onClick={() => setCurrentNav(3)}
-          >
-            <span className="side-rectangle"></span>
-            <span>CREATE PROJECT</span>
+          <li className={currentNav === 3 ? 'active' : ''}>
+            <Link to={'create-issue'} onClick={() => setCurrentNav(3)}>
+              <span className="side-rectangle"></span>
+              <span>CREATE PROJECT</span>
+            </Link>
           </li>
         </ul>
       </div>
