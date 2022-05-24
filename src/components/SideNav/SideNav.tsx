@@ -27,7 +27,7 @@ const SideNav = () => {
             </Link>
           </li>
           <li className={currentNav === 3 ? 'active' : ''}>
-            <Link to={'create-issue'} onClick={() => setCurrentNav(3)}>
+            <Link to={'create-project'} onClick={() => setCurrentNav(3)}>
               <span className="side-rectangle"></span>
               <span>CREATE PROJECT</span>
             </Link>
