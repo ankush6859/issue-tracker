@@ -1,0 +1,48 @@
+#sideNav {
+  background-color: var(--primary-color);
+  width: 25%;
+  height: 100vh;
+}
+
+.logo {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  img {
+    width: 80%;
+  }
+}
+.sidenav-links {
+  font-size: var(--font-subtitle1);
+  font-weight: 500;
+  margin-top: 30px;
+  color: #fff;
+  ul {
+    li {
+      display: flex;
+      align-items: center;
+      margin: 28px 10px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 4px;
+      height: 52px;
+      background-color: var(--primary-light);
+      :last-child {
+        margin-left: 1rem;
+      }
+      .side-rectangle {
+        width: 4px;
+      }
+    }
+  }
+}
+
+.active {
+  color: var(--secondary-color);
+}
+.active .side-rectangle {
+  width: 4px;
+  height: 52px;
+  background-color: var(--secondary-color);
+  border-radius: 4px 0px 0px 4px;
+}

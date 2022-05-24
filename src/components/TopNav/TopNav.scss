@@ -1,0 +1,47 @@
+#topNav {
+  height: 80px;
+  width: 75%;
+}
+.main_topnav {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-color);
+  border-bottom: 2px solid #cfcfcf;
+}
+
+.search {
+  width: 80%;
+  .search_bar {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    .material-icons {
+      margin-right: 16px;
+    }
+    input {
+      width: 100%;
+      outline: none;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
+
+.user {
+  width: 20%;
+  display: flex;
+  padding: 15px 10px;
+  align-items: center;
+  justify-content: flex-end;
+  border-left: 2px solid #cfcfcf;
+  .user_name {
+    margin-right: 12px;
+  }
+  .user_image {
+    img {
+      width: 50%;
+      border-radius: 50%;
+    }
+  }
+}
