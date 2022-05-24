@@ -20,9 +20,9 @@ const SideNav = () => {
               <span>PROJECT BOARD</span>
             </Link>
           </li>
-          <li>
+          <li className={currentNav === 2 ? 'active' : ''}>
             <Link to={'create-issue'} onClick={() => setCurrentNav(2)}>
-              {/* <span className="side-rectangle"></span> */}
+              <span className="side-rectangle"></span>
               <span>CREATE ISSUES</span>
             </Link>
           </li>

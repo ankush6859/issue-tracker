@@ -21,9 +21,10 @@
         padding: 15px 10px;
         border: none;
         outline: none;
-        border-bottom: 2px solid var(--input-border);
+        border-bottom: 1px solid var(--input-border);
         background-color: var(--background-color);
         color: var(--primary-color);
+        border-radius: 4px 4px 0px 0px;
       }
     }
   }

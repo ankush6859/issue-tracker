@@ -1,0 +1,49 @@
+#issueForm {
+  padding: 2.5rem;
+  h4 {
+    margin-bottom: 2rem;
+  }
+  .form_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .create {
+      background: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      color: #fff;
+      width: 15%;
+    }
+    .reset {
+      width: 15%;
+      background: none;
+      border: 1px solid var(--primary-color);
+      margin-right: 1rem;
+    }
+    .form_control {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      label {
+        margin-bottom: 0.5rem;
+      }
+      input,
+      select,
+      textarea {
+        font-size: 1.1rem;
+        padding: 15px 10px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid var(--input-border);
+        background-color: var(--background-color);
+        color: var(--primary-color);
+        border-radius: 4px 4px 0px 0px;
+      }
+    }
+  }
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
