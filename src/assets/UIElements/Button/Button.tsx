@@ -1,12 +1,26 @@
 import './Button.scss';
 
-const Button = (props: any) => {
+interface ButtonProps {
+  className: string;
+  disabled?: boolean;
+  type?: any;
+  children: JSX.Element | string;
+  onClick?: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({
+  className,
+  disabled,
+  type,
+  children,
+}: ButtonProps) => {
   return (
     <button
-      className={`button ${props.className} ${props.disabled && ' disabled'}`}
-      disabled={props.disabled}
+      className={`button ${className} ${disabled && ' disabled'}`}
+      disabled={disabled}
+      type={type}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

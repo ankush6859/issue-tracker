@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IssueInterface } from '../../interfaces/IssueInterface';
+import { IssueInterface, User } from '../../interfaces/IssueInterface';
 import ProjectInterface from '../../interfaces/ProjectInterface';
 const baseURL = 'https://hu-22-angular-mockapi-urtjok3rza-wl.a.run.app/';
 
@@ -25,8 +25,17 @@ export const issueApi = createApi({
         },
       }),
     }),
+    getAllUsers: builder.query<Array<User>, void>({
+      query: () => ({
+        url: 'user',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useGetAllIssuesForProjectQuery, useGetAllProjectsQuery } =
-  issueApi;
+export const {
+  useGetAllIssuesForProjectQuery,
+  useGetAllProjectsQuery,
+  useGetAllUsersQuery,
+} = issueApi;
