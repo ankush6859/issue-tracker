@@ -4,6 +4,8 @@ import {
   useGetAllIssuesForProjectQuery,
   useGetAllProjectsQuery,
 } from '../../services/API/issueApi';
+import { useAppSelector } from '../../services/hooks/hooks';
+import { RootState } from '../../services/store/store';
 import Issue from '../Issue/Issue';
 import './ProjectForm.scss';
 
@@ -11,6 +13,8 @@ const ProjectForm = () => {
   const [projectId, setProjectId] = useState<string>('P86100170');
   const [priority, setPriority] = useState<number>(-1);
   const [assigneeId, setAssigneeId] = useState<number>(-1);
+  const user = useAppSelector((state: RootState) => state.auth.user);
+  console.log();
 
   //Fetching data using hooks provided by RTK query
   const {
@@ -62,7 +66,12 @@ const ProjectForm = () => {
             </div>
             <div className="form_control" style={{ width: '50%' }}>
               <label htmlFor="project_owner">Project Owner</label>
-              <input name="project_owner" id="project_owner" readOnly />
+              <input
+                name="project_owner"
+                id="project_owner"
+                readOnly
+                value={user?.name}
+              />
             </div>
           </div>
           <div className="form_row dates" style={{ color: '#85929c' }}>

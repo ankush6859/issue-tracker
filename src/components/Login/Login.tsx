@@ -4,9 +4,14 @@ import main from '../../assets/images/main.png';
 import Button from '../../assets/UIElements/Button/Button';
 import TranslateIcon from '@mui/icons-material/Translate';
 import { UPDATE_FORM, onInputChange, onFocusOut } from '../../utils/formUtils';
-import './Login.scss';
 import Error from '../../assets/UIElements/Error/Error';
-
+import { useLoginMutation } from '../../services/API/authApi';
+import { RootState } from '../../services/store/store';
+import { useAppSelector, useAppDispatch } from '../../services/hooks/hooks';
+import { useNavigate } from 'react-router-dom';
+import './Login.scss';
+import { setCredentials } from '../../services/reduxSlice/authSlice';
+import { LoginRequest } from '../../interfaces/LoginInterface';
 export const initialState = {
   email: { value: '', touched: false, hasError: true, error: '' },
   password: { value: '', touched: false, hasError: true, error: '' },
@@ -14,6 +19,7 @@ export const initialState = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
   const formReducer = (state: typeof initialState, action: any) => {
     switch (action.type) {
       case UPDATE_FORM:
@@ -35,6 +41,22 @@ const Login = () => {
     }
   };
   const [formState, dispatch] = useReducer(formReducer, initialState);
+  const [login, { isLoading }] = useLoginMutation();
+  const user = useAppSelector((state: RootState) => state.auth.user);
+  const dispatch1 = useAppDispatch();
+
+  const formSubmitHandler = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const user = {
+      email: formState.email.value,
+      password: formState.password.value,
+    };
+    const response = await login(user);
+    let ans: any = response;
+    console.log(ans.data);
+    dispatch1(setCredentials(ans.data));
+    navigate('/');
+  };
 
   return (
     <div id="login">
@@ -49,7 +71,7 @@ const Login = () => {
         </div>
       </div>
       <div className="right">
-        <form id="login_form">
+        <form id="login_form" onSubmit={formSubmitHandler}>
           <div className="text">
             <h4>Login</h4>
           </div>
@@ -96,7 +118,11 @@ const Login = () => {
             </Error>
           </div>
           <div className="form_button">
-            <Button className="login_button" disabled={!formState.isFormValid}>
+            <Button
+              className="login_button"
+              disabled={!formState.isFormValid}
+              type={'submit'}
+            >
               LOGIN
             </Button>
           </div>

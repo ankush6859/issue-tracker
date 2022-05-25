@@ -15,3 +15,16 @@ export interface ActionItem {
   error: string;
   touched: false;
 }
+export interface LoginResponse {
+  message: string;
+  userId: string;
+  name: string;
+  email: string;
+  teamName: string;
+  desination: string;
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
