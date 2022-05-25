@@ -27,3 +27,9 @@ export interface IssueInterface {
 export interface IssueCardProps {
   issue: IssueInterface;
 }
+
+export interface IssueProps {
+  issues: Array<IssueInterface> | undefined;
+  priority: number | undefined;
+  assigneeId: number;
+}

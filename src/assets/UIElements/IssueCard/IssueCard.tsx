@@ -5,7 +5,7 @@ import './IssueCard.scss';
 
 const IssueCard: React.FC<IssueCardProps> = ({ issue }: IssueCardProps) => {
   const { id, createdOn, summary, description, createdBy, priority } = issue;
-  const priorityArr = ['high', 'medium', 'low'];
+  const priorityArr = ['low', 'medium', 'high'];
   return (
     <div className="card">
       <div className="card_header">
