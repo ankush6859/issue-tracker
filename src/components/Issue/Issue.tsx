@@ -24,16 +24,16 @@ const Issue: React.FC<IssueProps> = ({
 
   //Filtering the issues on the basis of status
   const todoFilteredArray = updatedIssues?.filter(
-    (issue: IssueInterface) => issue.type === 1
+    (issue: IssueInterface) => issue.status === 1
   );
   const developmentFilteredArray = updatedIssues?.filter(
-    (issue: IssueInterface) => issue.type === 2
+    (issue: IssueInterface) => issue.status === 2
   );
   const testingFilteredArray = updatedIssues?.filter(
-    (issue: IssueInterface) => issue.type === 3
+    (issue: IssueInterface) => issue.status === 3
   );
   const completedFilteredArray = updatedIssues?.filter(
-    (issue: IssueInterface) => issue.type === 4
+    (issue: IssueInterface) => issue.status === 4
   );
 
   return (

@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import {
   useGetAllProjectsQuery,
   useGetAllUsersQuery,
+  useAddIssueMutation,
 } from '../../services/API/issueApi';
 
 import './IssueForm.scss';
@@ -16,17 +17,25 @@ const IssueFormSchema = Yup.object().shape({
     .required('Summary is required'),
   description: Yup.string()
     .min(20, 'Summary should have at least 20 characters')
-    .max(40, 'Summary should be less than 40 characters')
+    .max(60, 'Summary should be less than 60 characters')
     .required('Description is required'),
+  projectID: Yup.string().required('Project is required'),
+  assignee: Yup.string().required('Assignee is required'),
   tags: Yup.string().required('Tags are required'),
-  story: Yup.string().required('Story points are required'),
+  storyPoint: Yup.string().required('Story points are required'),
 });
 
 const IssueForm = () => {
   //prettier-ignore
   const { data: projectData, isLoading: isLoadingProject } = useGetAllProjectsQuery();
   const { data: userData } = useGetAllUsersQuery();
+  const [addIssue] = useAddIssueMutation();
 
+  const formHandler = async (data: any) => {
+    console.log(data);
+    const response = await addIssue(data);
+    console.log(response);
+  };
   return (
     <>
       {isLoadingProject && <LoadingSpinner asOverlay={true} />}
@@ -36,18 +45,19 @@ const IssueForm = () => {
           initialValues={{
             summary: '',
             type: '1',
-            project_name: '',
+            projectID: '',
             description: '',
             priority: '1',
             assignee: '',
             tags: '',
             sprint: 'Sprint 1',
-            story: '',
+            storyPoint: '',
+            status: '1',
           }}
           validationSchema={IssueFormSchema}
           onSubmit={(values) => {
-            const tags = values.tags;
-            console.log({ ...values, tags: [tags] });
+            let tags = values.tags;
+            formHandler({ ...values, tags: [tags] });
           }}
         >
           {({ errors, touched, isValid }) => (
@@ -72,15 +82,18 @@ const IssueForm = () => {
                   <div className="error"></div>
                 </div>
                 <div className="form_control">
-                  <label htmlFor="project_name">Project</label>
-                  <Field as="select" name="project_name" id="project_name">
+                  <label htmlFor="projectID">Project</label>
+                  <Field as="select" name="projectID" id="projectID">
+                    <option value="" label="Select Project" disabled />
                     {projectData?.map((project) => (
                       <option value={project.projectID} key={project.projectID}>
                         {project.projectName}
                       </option>
                     ))}
                   </Field>
-                  <div className="error"></div>
+                  <div className="error">
+                    {errors.projectID && touched.projectID && errors.projectID}
+                  </div>
                 </div>
               </div>
               <div className="form_row">
@@ -114,11 +127,16 @@ const IssueForm = () => {
                 <div className="form_control">
                   <label htmlFor="assignee">Assignee</label>
                   <Field as="select" name="assignee" id="assignee">
+                    <option value="" disabled>
+                      Select assignee
+                    </option>
                     {userData?.map((user) => (
                       <option value={user.id}>{user.name}</option>
                     ))}
                   </Field>
-                  <div className="error"></div>
+                  <div className="error">
+                    {errors.assignee && touched.assignee && errors.assignee}
+                  </div>
                 </div>
               </div>
               <div className="form_row">
@@ -139,12 +157,28 @@ const IssueForm = () => {
                 </div>
               </div>
               <div className="form_row">
-                <div className="form_control">
-                  <label htmlFor="story">Story Points</label>
-                  <Field name="story" type="text" placeholder="0, 1, 2......" />
+                <div className="form_control mr-1">
+                  <label htmlFor="storyPoint">Story Point</label>
+                  <Field
+                    name="storyPoint"
+                    type="text"
+                    placeholder="0, 1, 2......"
+                  />
                   <div className="error">
-                    {errors.story && touched.story && errors.story}
+                    {errors.storyPoint &&
+                      touched.storyPoint &&
+                      errors.storyPoint}
                   </div>
+                </div>
+                <div className="form_control">
+                  <label htmlFor="status">Status</label>
+                  <Field as="select" name="status" type="text">
+                    <option value="1">Todo</option>
+                    <option value="2">Development</option>
+                    <option value="3">Testing</option>
+                    <option value="4">Completed</option>
+                  </Field>
+                  <div className="error"></div>
                 </div>
               </div>
               <div className="form_row">
