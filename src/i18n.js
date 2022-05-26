@@ -20,7 +20,7 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    fallbackLng: 'hi',
+    fallbackLng: 'en',
     debug: true,
     detection: {
       order: ['htmlTag', 'path', 'cookie', 'localStorage', 'subdomain'],

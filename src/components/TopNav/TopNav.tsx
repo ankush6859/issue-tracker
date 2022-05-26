@@ -2,12 +2,14 @@ import { useTranslation } from 'react-i18next';
 import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
 import { Outlet } from 'react-router-dom';
-import { useAppSelector } from '../../services/hooks/hooks';
+import { useAppSelector, useAppDispatch } from '../../services/hooks/hooks';
 import { RootState } from '../../services/store/store';
+import { logOut } from '../../services/reduxSlice/authSlice';
 
 import './TopNav.scss';
 
 const TopNav = () => {
+  const dispatch = useAppDispatch();
   const user = useAppSelector((state: RootState) => state.auth.user);
   const { t } = useTranslation();
   return (
@@ -22,7 +24,15 @@ const TopNav = () => {
         <div className="user">
           <span className="user_name">{user?.name}</span>
           <span className="user_image">
-            <PersonIcon />
+            {/* <PersonIcon> */}
+            <span
+              onClick={() => {
+                dispatch(logOut());
+              }}
+            >
+              Log Out
+            </span>
+            {/* </PersonIcon> */}
           </span>
         </div>
       </div>
