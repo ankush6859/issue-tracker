@@ -10,6 +10,7 @@ import Button from '../../assets/UIElements/Button/Button';
 import LoadingSpinner from '../../assets/UIElements/LoadingSpinner/LoadingSpinner';
 
 import './IssueForm.scss';
+import { useNavigate } from 'react-router-dom';
 
 const IssueFormSchema = Yup.object().shape({
   summary: Yup.string()
@@ -32,9 +33,11 @@ const IssueForm = () => {
   const { data: userData } = useGetAllUsersQuery();
   const [addIssue] = useAddIssueMutation();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const formHandler = async (data: any) => {
     await addIssue(data);
+    navigate('/');
   };
   return (
     <>
