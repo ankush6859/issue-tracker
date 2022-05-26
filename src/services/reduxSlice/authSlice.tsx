@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { LoginResponse } from '../../interfaces/LoginInterface';
 
 interface AuthState {

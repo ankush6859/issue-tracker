@@ -10,7 +10,7 @@ import Login from './components/Login/Login';
 import IssueForm from './components/IssueForm/IssueForm';
 import ProjectForm from './components/ProjectForm/ProjectForm';
 import NewProjectForm from './components/NewProjectForm/NewProjectForm';
-
+import Error404 from './components/Error404/Error404';
 import './index.scss';
 import { useAppSelector } from './services/hooks/hooks';
 const container = document.getElementById('root')!;
@@ -40,6 +40,7 @@ root.render(
             <Route path="/create-issue" element={<IssueForm />} />
             <Route path="/create-project" element={<NewProjectForm />} />
           </Route>
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
     </Provider>

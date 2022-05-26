@@ -45,3 +45,9 @@
     }
   }
 }
+
+.logout_button:hover {
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.2s;
+}

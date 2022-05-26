@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
 import { Outlet } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../services/hooks/hooks';
@@ -24,15 +23,14 @@ const TopNav = () => {
         <div className="user">
           <span className="user_name">{user?.name}</span>
           <span className="user_image">
-            {/* <PersonIcon> */}
             <span
+              className="logout_button"
               onClick={() => {
                 dispatch(logOut());
               }}
             >
               Log Out
             </span>
-            {/* </PersonIcon> */}
           </span>
         </div>
       </div>
