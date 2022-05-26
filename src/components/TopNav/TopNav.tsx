@@ -1,10 +1,14 @@
 import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
 import { Outlet } from 'react-router-dom';
+import { useAppSelector } from '../../services/hooks/hooks';
+import { RootState } from '../../services/store/store';
 
 import './TopNav.scss';
 
 const TopNav = () => {
+  const user = useAppSelector((state: RootState) => state.auth.user);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} id="topNav">
       <div className="main_topnav">
@@ -15,7 +19,7 @@ const TopNav = () => {
           </span>
         </div>
         <div className="user">
-          <span className="user_name">Ankush Sharma</span>
+          <span className="user_name">{user?.name}</span>
           <span className="user_image">
             <PersonIcon />
           </span>

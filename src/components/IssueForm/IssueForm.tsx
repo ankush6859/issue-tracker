@@ -32,7 +32,6 @@ const IssueForm = () => {
   const [addIssue] = useAddIssueMutation();
 
   const formHandler = async (data: any) => {
-    console.log(data);
     const response = await addIssue(data);
     console.log(response);
   };

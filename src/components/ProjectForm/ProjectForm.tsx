@@ -14,19 +14,11 @@ const ProjectForm = () => {
   const [priority, setPriority] = useState<number>(-1);
   const [assigneeId, setAssigneeId] = useState<number>(-1);
   const user = useAppSelector((state: RootState) => state.auth.user);
-  console.log();
 
   //Fetching data using hooks provided by RTK query
-  const {
-    data: issueData,
-    error: issueError,
-    isLoading: isLoadingIssue,
-  } = useGetAllIssuesForProjectQuery(projectId);
-  const {
-    data: projectData,
-    error: projectError,
-    isLoading: isLoadingProject,
-  } = useGetAllProjectsQuery();
+  const { data: issueData, isLoading: isLoadingIssue } =
+    useGetAllIssuesForProjectQuery(projectId);
+  const { data: projectData } = useGetAllProjectsQuery();
 
   //Getting list of available assignee
   const assigneeList = issueData?.map((issue) => issue.assignee);

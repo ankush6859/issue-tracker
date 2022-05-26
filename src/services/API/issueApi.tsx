@@ -3,12 +3,16 @@ import { IssueInterface, User } from '../../interfaces/IssueInterface';
 import NewIssueInterface, {
   NewIssueResponseInterface,
 } from '../../interfaces/NewIssueInterface';
+import NewProjectInterface, {
+  NewProjectResponseInterface,
+} from '../../interfaces/NewProjectInterface';
 import ProjectInterface from '../../interfaces/ProjectInterface';
 const baseURL = 'https://hu-22-angular-mockapi-urtjok3rza-wl.a.run.app/';
 
 export const issueApi = createApi({
   reducerPath: 'issueApi',
   baseQuery: fetchBaseQuery({ baseUrl: baseURL }),
+  tagTypes: ['Issue', 'Project'],
   endpoints: (builder) => ({
     getAllIssuesForProject: builder.query<Array<IssueInterface>, string>({
       query: (id) => ({
@@ -18,6 +22,7 @@ export const issueApi = createApi({
           userId: '86',
         },
       }),
+      providesTags: ['Issue'],
     }),
     getAllProjects: builder.query<Array<ProjectInterface>, void>({
       query: () => ({
@@ -27,6 +32,7 @@ export const issueApi = createApi({
           userID: '86',
         },
       }),
+      providesTags: ['Project'],
     }),
     getAllUsers: builder.query<Array<User>, void>({
       query: () => ({
@@ -43,6 +49,21 @@ export const issueApi = createApi({
           userID: '86',
         },
       }),
+      invalidatesTags: ['Issue'],
+    }),
+    addProject: builder.mutation<
+      NewProjectResponseInterface,
+      NewProjectInterface
+    >({
+      query: (body) => ({
+        url: 'project',
+        method: 'POST',
+        body: body,
+        headers: {
+          userid: '86',
+        },
+      }),
+      invalidatesTags: ['Project'],
     }),
   }),
 });
@@ -52,4 +73,5 @@ export const {
   useGetAllProjectsQuery,
   useGetAllUsersQuery,
   useAddIssueMutation,
+  useAddProjectMutation,
 } = issueApi;
