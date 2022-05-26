@@ -1,4 +1,4 @@
-import Button from '../../assets/UIElements/Button/Button';
+import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -6,9 +6,10 @@ import {
   useGetAllUsersQuery,
   useAddIssueMutation,
 } from '../../services/API/issueApi';
+import Button from '../../assets/UIElements/Button/Button';
+import LoadingSpinner from '../../assets/UIElements/LoadingSpinner/LoadingSpinner';
 
 import './IssueForm.scss';
-import LoadingSpinner from '../../assets/UIElements/LoadingSpinner/LoadingSpinner';
 
 const IssueFormSchema = Yup.object().shape({
   summary: Yup.string()
@@ -30,16 +31,16 @@ const IssueForm = () => {
   const { data: projectData, isLoading: isLoadingProject } = useGetAllProjectsQuery();
   const { data: userData } = useGetAllUsersQuery();
   const [addIssue] = useAddIssueMutation();
+  const { t } = useTranslation();
 
   const formHandler = async (data: any) => {
-    const response = await addIssue(data);
-    console.log(response);
+    await addIssue(data);
   };
   return (
     <>
       {isLoadingProject && <LoadingSpinner asOverlay={true} />}
       <div id="issueForm">
-        <h4>Create User Stories/Tasks/Bugs</h4>
+        <h4>{t('issue_form.title')}</h4>
         <Formik
           initialValues={{
             summary: '',
@@ -63,8 +64,12 @@ const IssueForm = () => {
             <Form>
               <div className="form_row">
                 <div className="form_control">
-                  <label htmlFor="summary">Summary</label>
-                  <Field type="text" name="summary" placeholder="Add Summary" />
+                  <label htmlFor="summary">{t('issue_form.summary')}</label>
+                  <Field
+                    type="text"
+                    name="summary"
+                    placeholder={t('issue_form.summary_placeholder')}
+                  />
                   <div className="error">
                     {errors.summary && touched.summary && errors.summary}
                   </div>
@@ -72,7 +77,7 @@ const IssueForm = () => {
               </div>
               <div className="form_row">
                 <div className="form_control mr-1">
-                  <label htmlFor="type">Type</label>
+                  <label htmlFor="type">{t('issue_form.type')}</label>
                   <Field as="select" name="type" id="type">
                     <option value="1">Bug</option>
                     <option value="2">Task</option>
@@ -81,9 +86,13 @@ const IssueForm = () => {
                   <div className="error"></div>
                 </div>
                 <div className="form_control">
-                  <label htmlFor="projectID">Project</label>
+                  <label htmlFor="projectID">{t('issue_form.project')}</label>
                   <Field as="select" name="projectID" id="projectID">
-                    <option value="" label="Select Project" disabled />
+                    <option
+                      value=""
+                      label={t('issue_form.select_project')}
+                      disabled
+                    />
                     {projectData?.map((project) => (
                       <option value={project.projectID} key={project.projectID}>
                         {project.projectName}
@@ -97,14 +106,16 @@ const IssueForm = () => {
               </div>
               <div className="form_row">
                 <div className="form_control">
-                  <label htmlFor="description">Description</label>
+                  <label htmlFor="description">
+                    {t('issue_form.description')}
+                  </label>
                   <Field
                     as="textarea"
                     name="description"
                     id="description"
                     cols={30}
                     rows={5}
-                    placeholder="Write Description"
+                    placeholder={t('issue_form.description_placeholder')}
                   ></Field>
                   <div className="error">
                     {errors.description &&
@@ -115,19 +126,19 @@ const IssueForm = () => {
               </div>
               <div className="form_row">
                 <div className="form_control mr-1">
-                  <label htmlFor="priority">Priority</label>
+                  <label htmlFor="priority">{t('issue_form.priority')}</label>
                   <Field as="select" name="priority" id="priority">
-                    <option value="1">LOW</option>
-                    <option value="2">MEDIUM</option>
-                    <option value="3">HIGH</option>
+                    <option value="1">{t('low')}</option>
+                    <option value="2">{t('medium')}</option>
+                    <option value="3">{t('high')}</option>
                   </Field>
                   <div className="error"></div>
                 </div>
                 <div className="form_control">
-                  <label htmlFor="assignee">Assignee</label>
+                  <label htmlFor="assignee">{t('issue_form.assignee')}</label>
                   <Field as="select" name="assignee" id="assignee">
                     <option value="" disabled>
-                      Select assignee
+                      {t('issue_form.select_assignee')}
                     </option>
                     {userData?.map((user) => (
                       <option value={user.id}>{user.name}</option>
@@ -140,24 +151,26 @@ const IssueForm = () => {
               </div>
               <div className="form_row">
                 <div className="form_control mr-1">
-                  <label htmlFor="tags">Tags</label>
+                  <label htmlFor="tags">{t('issue_form.tags')}</label>
                   <Field type="text" name="tags" id="tags" />
                   <div className="error">
                     {errors.tags && touched.tags && errors.tags}
                   </div>
                 </div>
                 <div className="form_control">
-                  <label htmlFor="sprint">Sprint</label>
+                  <label htmlFor="sprint">{t('issue_form.sprint')}</label>
                   <Field as="select" name="sprint" id="sprint">
-                    <option value="Sprint 1">Sprint 1</option>
-                    <option value="Sprint 2">Sprint 2</option>
+                    <option value="Sprint 1">{t('sprint_1')}</option>
+                    <option value="Sprint 2">{t('sprint_2')}</option>
                   </Field>
                   <div className="error"></div>
                 </div>
               </div>
               <div className="form_row">
                 <div className="form_control mr-1">
-                  <label htmlFor="storyPoint">Story Point</label>
+                  <label htmlFor="storyPoint">
+                    {t('issue_form.storyPoint')}
+                  </label>
                   <Field
                     name="storyPoint"
                     type="text"
@@ -170,22 +183,27 @@ const IssueForm = () => {
                   </div>
                 </div>
                 <div className="form_control">
-                  <label htmlFor="status">Status</label>
-                  <Field as="select" name="status" type="text">
-                    <option value="1">Todo</option>
-                    <option value="2">Development</option>
-                    <option value="3">Testing</option>
-                    <option value="4">Completed</option>
+                  <label htmlFor="status">{t('issue_form.status')}</label>
+                  <Field
+                    as="select"
+                    name="status"
+                    type="text"
+                    style={{ textTransform: 'capitalize' }}
+                  >
+                    <option value="1">{t('project_board.todo')}</option>
+                    <option value="2">{t('project_board.developement')}</option>
+                    <option value="3">{t('project_board.testing')}</option>
+                    <option value="4">{t('project_board.completed')}</option>
                   </Field>
                   <div className="error"></div>
                 </div>
               </div>
               <div className="form_row">
                 <Button className="reset" type={'reset'}>
-                  RESET
+                  {t('reset_button')}
                 </Button>
                 <Button className="create" type={'submit'} disabled={!isValid}>
-                  CREATE
+                  {t('create_button')}
                 </Button>
               </div>
             </Form>

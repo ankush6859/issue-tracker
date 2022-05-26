@@ -1,4 +1,6 @@
 import React, { useReducer } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n';
 import logo from '../../assets/images/logo.png';
 import main from '../../assets/images/main.png';
 import Button from '../../assets/UIElements/Button/Button';
@@ -20,6 +22,7 @@ export const initialState = {
 
 const Login = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const formReducer = (state: typeof initialState, action: any) => {
     switch (action.type) {
       case UPDATE_FORM:
@@ -44,6 +47,7 @@ const Login = () => {
   const [formState, dispatch] = useReducer(formReducer, initialState);
   const [login, { isLoading }] = useLoginMutation();
   const dispatch1 = useAppDispatch();
+  const [currLang, setCurrLang] = useState('en');
 
   const formSubmitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -60,6 +64,10 @@ const Login = () => {
     dispatch1(setCredentials(response.data));
     navigate('/');
   };
+  const languageHandler = () => {
+    currLang === 'en' ? i18n.changeLanguage('hi') : i18n.changeLanguage('en');
+    currLang === 'en' ? setCurrLang('hi') : setCurrLang('en');
+  };
 
   return (
     <>
@@ -72,21 +80,24 @@ const Login = () => {
           </div>
           <div className="language_changer">
             <TranslateIcon />
-            <span>Languages</span>
+            <span onClick={languageHandler}>
+              Change to
+              {currLang === 'en' ? ' Hindi' : ' English'}
+            </span>
           </div>
         </div>
         <div className="right">
           <form id="login_form" onSubmit={formSubmitHandler}>
             <div className="text">
-              <h4>Login</h4>
+              <h4>{t('login.title')}</h4>
             </div>
             <div className="form_control">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{t('login.email')}</label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Enter your email address"
+                placeholder={t('login.email_placeholder')}
                 value={formState.email.value}
                 onChange={(e) => {
                   onInputChange('email', e.target.value, dispatch, formState);
@@ -102,7 +113,7 @@ const Login = () => {
               </Error>
             </div>
             <div className="form_control">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">{t('login.password')}</label>
               <input
                 type="password"
                 name="password"
@@ -134,7 +145,7 @@ const Login = () => {
                 disabled={!formState.isFormValid}
                 type={'submit'}
               >
-                LOGIN
+                {t('login.title')}
               </Button>
             </div>
           </form>

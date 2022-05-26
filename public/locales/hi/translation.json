@@ -1,0 +1,57 @@
+{
+  "login": {
+    "title": "लॉग इन",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "email_placeholder": "अपना ईमेल पता दर्ज करें"
+  },
+  "side_nav_1": "परियोजना बोर्ड",
+  "side_nav_2": "मुद्दे बनाएं",
+  "side_nav_3": "परियोजना बनाएं",
+  "top_search": "खोज के लिए टाइप करें",
+  "login_button": "लॉग इन",
+  "create_button": "क्रिएट",
+  "reset_button": "रिसेट",
+  "project_board": {
+    "details": "परियोजना विवरण",
+    "name": "परियोजना का नाम",
+    "owner": "प्रोजेक्ट स्वामी",
+    "start_date": "आरंभ करने की तिथि",
+    "end_date": "अंतिम तिथि",
+    "filter_assignee": "फ़िल्टर असाइनी",
+    "filter_priority": "प्राथमिकता का उपयोग करके फ़िल्टर करें",
+    "todo": "टुडु ऍप",
+    "developement": "विकास",
+    "testing": "परिक्षण",
+    "completed": "पूर्ण"
+  },
+  "issue_form": {
+    "title": "उपयोगकर्ता कहानियां/ कार्य/ बग बनाएं",
+    "summary": "सारांश",
+    "type": "प्रकार",
+    "project": "परियोजना",
+    "description": "विवरण",
+    "priority": "प्राथमिकता",
+    "assignee": "संपत्ति-भागी",
+    "tags": "टैग",
+    "sprint": "स्प्रिंट ",
+    "storyPoint": "स्टोरी पॉइंट",
+    "status": "स्थिति",
+    "summary_placeholder": "सारांश दर्ज करें",
+    "description_placeholder": "विवरण लिखें",
+    "select_project": "परियोजना का चयन करें",
+    "select_assignee": "असाइनी चुनें"
+  },
+  "low": "लौ",
+  "medium": "मध्यम",
+  "high": "हाई",
+  "sprint_1": "स्प्रिंट 1",
+  "sprint_2": "स्प्रिंट 2",
+  "project_form": {
+    "name": "परियोजना का नाम",
+    "name_placeholder": "अपना प्रोजेक्ट नाम दर्ज करें",
+    "owner": "परियोजना का मालिक",
+    "start_date": "परियोजना प्रारंभ तिथि",
+    "end_date": "परियोजना समाप्ति तिथि"
+  }
+}

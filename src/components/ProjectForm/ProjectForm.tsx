@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import LoadingSpinner from '../../assets/UIElements/LoadingSpinner/LoadingSpinner';
 import {
   useGetAllIssuesForProjectQuery,
@@ -7,6 +8,7 @@ import {
 import { useAppSelector } from '../../services/hooks/hooks';
 import { RootState } from '../../services/store/store';
 import Issue from '../Issue/Issue';
+
 import './ProjectForm.scss';
 
 const ProjectForm = () => {
@@ -14,6 +16,7 @@ const ProjectForm = () => {
   const [priority, setPriority] = useState<number>(-1);
   const [assigneeId, setAssigneeId] = useState<number>(-1);
   const user = useAppSelector((state: RootState) => state.auth.user);
+  const { t } = useTranslation();
 
   //Fetching data using hooks provided by RTK query
   const { data: issueData, isLoading: isLoadingIssue } =
@@ -36,14 +39,14 @@ const ProjectForm = () => {
   return (
     <>
       <div id="projectForm">
-        <h4>Project Details</h4>
+        <h4>{t('project_board.details')}</h4>
         <div className="queryForm">
           <div className="form_row">
             <div
               className="form_control"
               style={{ width: '50%', marginRight: '1rem' }}
             >
-              <label htmlFor="project_name">Project Name</label>
+              <label htmlFor="project_name">{t('project_board.name')}</label>
               <select
                 name="project_name"
                 id="project_name"
@@ -57,7 +60,7 @@ const ProjectForm = () => {
               </select>
             </div>
             <div className="form_control" style={{ width: '50%' }}>
-              <label htmlFor="project_owner">Project Owner</label>
+              <label htmlFor="project_owner">{t('project_board.owner')}</label>
               <input
                 name="project_owner"
                 id="project_owner"
@@ -67,8 +70,8 @@ const ProjectForm = () => {
             </div>
           </div>
           <div className="form_row dates" style={{ color: '#85929c' }}>
-            <span>Start Date: 31-01-2022 &nbsp; |</span>
-            <span> &nbsp; End Date: 31-01-2022</span>
+            <span>{t('project_board.start_date')}: 31-01-2022 &nbsp; |</span>
+            <span> &nbsp; {t('project_board.end_date')}: 31-01-2022</span>
           </div>
           <div className="form_row filter">
             <div className="form_control">
@@ -83,7 +86,9 @@ const ProjectForm = () => {
                   </option>
                 ))}
               </select>
-              <label htmlFor="assignee">Filter Assignee</label>
+              <label htmlFor="assignee">
+                {t('project_board.filter_assignee')}
+              </label>
             </div>
             <div className="form_control">
               <select
@@ -92,11 +97,13 @@ const ProjectForm = () => {
                 onChange={priorityChangeHandler}
               >
                 <option value="-1">Select</option>
-                <option value="1">LOW</option>
-                <option value="2">MEDIUM</option>
-                <option value="3">HIGH</option>
+                <option value="1">{t('low')}</option>
+                <option value="2">{t('medium')}</option>
+                <option value="3">{t('high')}</option>
               </select>
-              <label htmlFor="priority">Filter Priority</label>
+              <label htmlFor="priority">
+                {t('project_board.filter_priority')}
+              </label>
             </div>
           </div>
         </div>

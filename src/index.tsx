@@ -1,5 +1,6 @@
 import React from 'react';
 import App from './App';
+import './i18n';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';

@@ -1,6 +1,7 @@
 import { Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 import Button from '../../assets/UIElements/Button/Button';
 import LoadingSpinner from '../../assets/UIElements/LoadingSpinner/LoadingSpinner';
 import { useAddProjectMutation } from '../../services/API/issueApi';
@@ -19,6 +20,7 @@ const ProjectFormSchema = Yup.object().shape({
 });
 
 const NewProjectForm = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const user = useAppSelector((state: RootState) => state.auth.user);
   const [addProject, { isLoading }] = useAddProjectMutation();
@@ -49,12 +51,12 @@ const NewProjectForm = () => {
             <Form>
               <div className="form_row">
                 <div className="form_control mr-1">
-                  <label htmlFor="projectName">Project Name</label>
+                  <label htmlFor="projectName">{t('project_form.name')}</label>
                   <Field
                     type="text"
                     id="projectName"
                     name="projectName"
-                    placeholder="Project Name"
+                    placeholder={t('project_form.name_placeholder')}
                   />
                   <div className="error">
                     {errors.projectName &&
@@ -63,7 +65,9 @@ const NewProjectForm = () => {
                   </div>
                 </div>
                 <div className="form_control">
-                  <label htmlFor="projectOwner">Owner</label>
+                  <label htmlFor="projectOwner">
+                    {t('project_form.owner')}
+                  </label>
                   <Field
                     type="text"
                     name="projectOwner"
@@ -75,7 +79,9 @@ const NewProjectForm = () => {
               </div>
               <div className="form_row">
                 <div className="form_control mr-1">
-                  <label htmlFor="projectStartDate">Project Start Date</label>
+                  <label htmlFor="projectStartDate">
+                    {t('project_form.start_date')}
+                  </label>
                   <Field
                     type="date"
                     id="projectStartDate"
@@ -88,7 +94,9 @@ const NewProjectForm = () => {
                   </div>
                 </div>
                 <div className="form_control">
-                  <label htmlFor="projectEndDate">Project End Date</label>
+                  <label htmlFor="projectEndDate">
+                    {t('project_form.end_date')}
+                  </label>
                   <Field
                     type="date"
                     name="projectEndDate"
@@ -103,10 +111,10 @@ const NewProjectForm = () => {
               </div>
               <div className="form_row">
                 <Button className="reset" type={'reset'}>
-                  RESET
+                  {t('reset_button')}
                 </Button>
                 <Button className="create" type={'submit'} disabled={!isValid}>
-                  CREATE
+                  {t('create_button')}
                 </Button>
               </div>
             </Form>

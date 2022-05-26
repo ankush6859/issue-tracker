@@ -1,0 +1,57 @@
+{
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "email_placeholder": "Enter your email address"
+  },
+  "side_nav_1": "PROJECT BOARD",
+  "side_nav_2": "CREATE ISSUES",
+  "side_nav_3": "CREATE PROJECT",
+  "top_search": "Search",
+  "login_button": "LOGIN",
+  "create_button": "CREATE",
+  "reset_button": "RESET",
+  "project_board": {
+    "details": "Project Details",
+    "name": "Project Name",
+    "owner": "Project Owner",
+    "start_date": "Start Date",
+    "end_date": "End Date",
+    "filter_assignee": "Filter Assignee",
+    "filter_priority": "Filter Priority",
+    "todo": "TO DO",
+    "developement": "DEVELOPMENT",
+    "testing": "TESTING",
+    "completed": "COMPLETED"
+  },
+  "issue_form": {
+    "title": "Create User Stories/Tasks/Bugs",
+    "summary": "Summary",
+    "type": "Type",
+    "project": "Project",
+    "description": "Description",
+    "priority": "Priority",
+    "assignee": "Assignee",
+    "tags": "Tags",
+    "sprint": "Sprint",
+    "storyPoint": "Story Point",
+    "status": "Status",
+    "summary_placeholder": "Add Summary",
+    "description_placeholder": "Write Description",
+    "select_project": "Select Project",
+    "select_assignee": "Select Assignee",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "sprint 1": "Sprint 1",
+    "sprint 2": "Sprint 2"
+  },
+  "project_form": {
+    "name": "Project Name",
+    "name_placeholder": "Enter your project name",
+    "owner": "Project Owner",
+    "start_date": "Project Start Date",
+    "end_date": "Project End Date"
+  }
+}
